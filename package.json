@@ -1,0 +1,24 @@
+{
+  "name": "sample-node-package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WhippingCream/sample-node-package.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WhippingCream/sample-node-package/issues"
+  },
+  "homepage": "https://github.com/WhippingCream/sample-node-package#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {}
+}
