@@ -1,4 +1,4 @@
-const { summoner } = require('../lib');
+const { v1, v4 } = require('../lib');
 
 require('dotenv').config();
 
