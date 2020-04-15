@@ -11,8 +11,8 @@ if (!process.env.RIOT_API_KEY) {
 }
 
 const reqs = [
-    summoner.getByName('Hide on bush'),
-    summoner.getByName('칼과창방패'),
+    v4.summoner.getByName('Hide on bush'),
+    v4.summoner.getByName('칼과창방패'),
 ];
 
 reqs.forEach(async (req) => {
