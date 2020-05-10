@@ -1,4 +1,6 @@
-# Sample NODE PACKAGE
+# Tristana
+
+Riot API Wrapper
 
 ## Getting Started
 
