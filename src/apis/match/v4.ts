@@ -2,43 +2,43 @@
  * @see https://developer.riotgames.com/apis#match-v4
  */
 
-const createRequest = require('../../utils/createRequest-v4')
+import { v4 } from "../../utils/createRequest";
 
-const scope = '/lol/match/v4';
+const scope = "/lol/match/v4";
 
 /**
  * @description Get match IDs by tournament code.
  * @param {string} tournamentCode The tournament code.
  */
-exports.getByTournamentCode = (tournamentCode) => createRequest({
-    method: 'GET',
-    path: `${scope}/matches/by-tournament-code/${tournamentCode}/ids`
-});
+export const getByTournamentCode = (tournamentCode: string) =>
+  v4({
+    path: `${scope}/matches/by-tournament-code/${tournamentCode}/ids`,
+  });
 
 /**
  * @description Get match by match ID.
  * @param {long} matchId The match ID.
  */
-exports.get = (matchId) => createRequest({
-    method: 'GET',
-    path: `${scope}/matches/${matchId}`
-});
+export const get = (matchId: number) =>
+  v4({
+    path: `${scope}/matches/${matchId}`,
+  });
 
 /**
  * @description Get match by match ID and tournament code.
  * @param {long} matchId The match ID.
  * @param {string} tournamentCode The tournament code.
  */
-exports.getByUUID = (matchId, tournamentCode) => createRequest({
-    method: 'GET',
-    path: `${scope}/matches/${matchId}/by-tournament-code/${tournamentCode}`
-});
+export const getByUUID = (matchId: number, tournamentCode: string) =>
+  v4({
+    path: `${scope}/matches/${matchId}/by-tournament-code/${tournamentCode}`,
+  });
 
 /**
  * @description Get matchlist for games played on given account ID and platform ID and filtered using given filter parameters, if any.
  * @param {string} encryptedAccountId The account ID.
  * @param {int} [champion] Set of champion IDs for filtering the matchlist.
- * @param {int} [queue] Set of queue IDs for filtering the matchlist.	
+ * @param {int} [queue] Set of queue IDs for filtering the matchlist.
  * @param {int} [season] Set of season IDs for filtering the matchlist.
  * @param {long} [endTime] The end time to use for filtering matchlist specified as epoch milliseconds.
  *                         If beginTime is specified, but not endTime, then endTime defaults to the the current unix timestamp in milliseconds (the maximum time range limitation is not observed in this specific case).
@@ -61,16 +61,16 @@ exports.getByUUID = (matchId, tournamentCode) => createRequest({
  *                           If both are specified, then endIndex must be greater than beginIndex.
  *                           The maximum range allowed is 100, otherwise a 400 error code is returned.
  */
-exports.getByAccountId = (encryptedAccountId) => createRequest({
-    method: 'GET',
-    path: `${scope}/matchlists/by-account/${encryptedAccountId}`
-});
+export const getByAccountId = (encryptedAccountId: string) =>
+  v4({
+    path: `${scope}/matchlists/by-account/${encryptedAccountId}`,
+  });
 
 /**
  * @description Get match timeline by match ID.
  * @param {long} matchId The match ID.
  */
-exports.getTimeline = (matchId) => createRequest({
-    method: 'GET',
-    path: `${scope}/timelines/by-match/${matchId}`
-});
+export const getTimeline = (matchId: number) =>
+  v4({
+    path: `${scope}/timelines/by-match/${matchId}`,
+  });
