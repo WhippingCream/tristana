@@ -2,6 +2,7 @@
  * @see https://developer.riotgames.com/apis#league-v4
  */
 
+import { Tier } from "../..";
 import { v4 } from "../../utils/createRequest";
 
 const scope = "/lol/league/v4";

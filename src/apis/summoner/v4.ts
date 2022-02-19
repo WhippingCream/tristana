@@ -2,6 +2,8 @@
  * @see https://developer.riotgames.com/apis#summoner-v4
  */
 
+import { AxiosResponse } from "axios";
+import { SummonerDto } from "./dto/summoner.dto";
 import { v4 } from "../../utils/createRequest";
 
 const scope = "/lol/summoner/v4";
@@ -19,8 +21,10 @@ export const getByAccount = (encryptedAccountId: string) =>
  * @description Get a summoner by summoner name.
  * @param {string} summonerName Summoner Name
  */
-export const getByName = (summonerName: string) =>
-  v4({
+export const getByName = (
+  summonerName: string
+): Promise<AxiosResponse<SummonerDto>> =>
+  v4<SummonerDto>({
     path: `${scope}/summoners/by-name/${encodeURI(summonerName)}`,
   });
 

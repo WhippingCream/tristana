@@ -1,41 +1,41 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+
+import { HttpMethod } from "../enums/httpMethod";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-interface RequestParamV4 {
-  method?: HttpMethod;
+interface RequestParam {
   path: string;
   params?: unknown;
 }
 
-interface RequestParamV1 {
-  method?: HttpMethod;
-  path: string;
-  tokenId: string;
-  params?: unknown;
-}
-
-export const v4 = ({ method, path, params }: RequestParamV4) => {
-  return () =>
-    axios({
-      method: method ?? HttpMethod.GET,
-      url: `https://${process.env.RIOT_API_REGION}.api.riotgames.com${path}`,
+export const matchV5 = <T>({
+  path,
+  params,
+}: RequestParam): Promise<AxiosResponse<T>> => {
+  return axios.get<T>(
+    `https://${process.env.RIOT_API_REGION_CONTINENT}.api.riotgames.com/lol/match/v5${path}`,
+    {
       params,
       headers: {
         "X-Riot-Token": process.env.RIOT_API_KEY,
       },
-    });
+    }
+  );
 };
 
-export const v1 = ({ method, path, tokenId, params }: RequestParamV1) => {
-  return () =>
-    axios({
-      method: method ?? HttpMethod.GET,
-      url: `https://acs.leagueoflegends.com/v1${path}`,
+export const v4 = <T>({
+  path,
+  params,
+}: RequestParam): Promise<AxiosResponse<T>> => {
+  return axios.get<T>(
+    `https://${process.env.RIOT_API_REGION}.api.riotgames.com${path}`,
+    {
       params,
       headers: {
-        cookie: `id_token=${tokenId}`,
+        "X-Riot-Token": process.env.RIOT_API_KEY,
       },
-    });
+    }
+  );
 };
