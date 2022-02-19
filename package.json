@@ -1,6 +1,6 @@
 {
   "name": "@whipping-cream/tristana",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Riot League of legends API Wrapper",
   "main": "index.js",
   "directories": {
